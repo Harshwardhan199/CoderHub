@@ -6,7 +6,7 @@ import QuestionBank from "../components/LanguageModules/QuestionBank";
 import ProjectGrid from "../components/LanguageModules/ProjectGrid";
 import RoadmapView from "../components/LanguageModules/RoadmapView";
 
-const BASE_URL = process.env.VITE_BACKEND_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const LanguageModulePage = () => {
     const { lang, module } = useParams();

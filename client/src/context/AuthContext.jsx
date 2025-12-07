@@ -5,7 +5,7 @@ import { googleLogout } from '@react-oauth/google';
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
-const BASE_URL = process.env.VITE_BACKEND_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);

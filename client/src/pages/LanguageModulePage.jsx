@@ -6,6 +6,8 @@ import QuestionBank from "../components/LanguageModules/QuestionBank";
 import ProjectGrid from "../components/LanguageModules/ProjectGrid";
 import RoadmapView from "../components/LanguageModules/RoadmapView";
 
+const BASE_URL = process.env.VITE_BACKEND_URL;
+
 const LanguageModulePage = () => {
     const { lang, module } = useParams();
     const navigate = useNavigate();
@@ -31,7 +33,7 @@ const LanguageModulePage = () => {
             setError(null);
             try {
                 // 1. Fetch Language Metadata (Display Name, etc.)
-                const langResponse = await axios.get(`http://localhost:5000/api/languages/${lang}`);
+                const langResponse = await axios.get(`${BASE_URL}/languages/${lang}`);
                 setLanguageData(langResponse.data);
 
                 // 2. Fetch Module Content
@@ -40,7 +42,7 @@ const LanguageModulePage = () => {
                     throw new Error(`Unknown module type: ${module}`);
                 }
 
-                const contentResponse = await axios.get(`http://localhost:5000/api/languages/${lang}/${dbType}`);
+                const contentResponse = await axios.get(`${BASE_URL}/languages/${lang}/${dbType}`);
                 setModuleContent(contentResponse.data);
 
             } catch (err) {

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
+const BASE_URL = process.env.VITE_BACKEND_URL;
+
 function LanguagePage() {
     const { lang } = useParams();
     const [hoveredCard, setHoveredCard] = useState(null);
@@ -30,7 +32,7 @@ function LanguagePage() {
             setLoading(true);
             try {
                 // Fetch from backend
-                const response = await axios.get(`http://localhost:5000/api/languages/${lang}`);
+                const response = await axios.get(`${BASE_URL}/languages/${lang}`);
                 setData(response.data);
                 setError(null);
             } catch (err) {
